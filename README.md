@@ -25,7 +25,7 @@ First, run for install dependencies:
 ```bash
 yarn
 # or
-npm start
+npm install
 ```
 
 Second, run for start server:
