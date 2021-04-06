@@ -42,7 +42,7 @@ You can start editing the page by modifying `App.tsx`. The page auto-updates as 
 
 To learn more about Expo, take a look at the following resources:
 
-- [Expo Documentation](https://docs.expo.io/) - learn about Next.js features and API.
+- [Expo Documentation](https://docs.expo.io/) - learn about Expo features and API.
 - [Tutorial Expo](https://docs.expo.io/tutorial/) - an interactive Expo tutorial.
 
 You can check out [the Expo GitHub repository](https://github.com/expo/expo/) - your feedback and contributions are welcome!
