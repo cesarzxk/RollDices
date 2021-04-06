@@ -6,7 +6,7 @@ System for dices rolling and creation in RPG games
 ![1](https://user-images.githubusercontent.com/43748428/113769318-3da14600-96f7-11eb-8e42-7c605245f502.png)
 ![2](https://user-images.githubusercontent.com/43748428/113769322-3e39dc80-96f7-11eb-8609-c228fa6bc3af.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Expo](https://expo.io/) project bootstrapped with [`expo init`](https://docs.expo.io/get-started/create-a-new-app/).
 
 ## :rocket: Technologies
 
