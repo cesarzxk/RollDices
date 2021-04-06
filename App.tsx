@@ -21,7 +21,7 @@ interface itemData {
     value:number[];
 }
 
-interface titleData{
+interface titleData{ 
         id:number;
         dice:number;
         multplier:number;
@@ -43,7 +43,7 @@ export default function Dados(){
         
         
         
-        function changeData(id:any, max:number, multplier:number){
+        function changeData(id:any, max:number, multplier:number){ //Altera os dados de um determinado item no Array
             let newDate = Data.slice();
             let valor = [];
             for (let i=0; i<multplier; i++){
@@ -60,7 +60,7 @@ export default function Dados(){
             setData(newDate);
         }
 
-        function format(array:number[]){
+        function format(array:number[]){ //Formata dados do array valor para ser exibido no dado 
             let texto = '';
             for(var i=0;i<array.length;i++){
                 texto += ' '+array[i]+ ' ';
@@ -68,10 +68,10 @@ export default function Dados(){
             return texto;
         }
 
-        function remove(id:number){
+        function remove(id:number){ //remove um item do Array Data apartir de um id e reordena redefinindo cada id 
             let newDate = Data.slice();
             newDate.splice(id,1);
-            for(let i=0; i< newDate.length;i++){
+            for(let i=id; i< newDate.length;i++){
                 newDate[i] = {
                     id:i, 
                     dice:newDate[i].dice,
@@ -84,7 +84,7 @@ export default function Dados(){
             setData(newDate);
         }
 
-        const Item = ({title}:{title: titleData}) => (
+        const Item = ({title}:{title: titleData}) => ( //Objeto correspondente a cada item no Array Data exibido na primeira caixa
         <View>
             <TouchableOpacity onLongPress={()=>{remove(title.id); chargeBoxLenght(); somarTotal();}}  
             onPress={()=>{changeData(title.id, title.dice, title.multplier); somarTotal();}}>
@@ -119,7 +119,7 @@ export default function Dados(){
             <ItemTotal title={item} />
         );
 
-        const ItemTotal = ({title}:{title: titleData}) => (
+        const ItemTotal = ({title}:{title: titleData}) => ( //Objeto correspondente a cada item no Array Data exibido na segunda caixa
             <View style={
                 {
                 backgroundColor:title.color, 
@@ -133,7 +133,7 @@ export default function Dados(){
             </View>
         );
         
-        function somar(array:number[]){
+        function somar(array:number[]){ //Soma dos itens de um array de números  utilizando reduce
             if (array.length > 0){
                 const reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
                 return array.reduce(reducer);
@@ -141,7 +141,7 @@ export default function Dados(){
                 return 0;
             }
         }
-        function somarTotal(){
+        function somarTotal(){ //soma total de todos os vetores correspondente ao array valor do array Data 
             let total = 0;
             for(let i=0;i<Data.length;i++){
                 total += somar(Data[i].value) + Data[i].modifier;
@@ -151,10 +151,8 @@ export default function Dados(){
 
 
 
-        let addToListCount = 0
-        function addToList(diceValue:number, multplier=1, modifier=1) {
-            addToListCount++;
-            var color = require('randomcolor');
+        function addToList(diceValue:number, multplier=1, modifier=1) {//Adiciona novos itens ao array Data
+            var color = require('randomcolor'); //Cria um hex de cor aleatória
             Data.push({
                 id:Data.length, 
                 dice:diceValue,
@@ -163,18 +161,19 @@ export default function Dados(){
                 color:color(),
                 value:[]
             });
+
             setData([...Data]);
             chargeBoxLenght();
             setId(Id+1);
           }
 
-        function chargeBoxLenght(){
+        function chargeBoxLenght(){ //Altera o valor do tamanho de cada box 
                 setTamanho((Math.ceil(Data.length/4))*100);
-                setTamanhoTotal((Math.ceil(Data.length/8))*40)
+                setTamanhoTotal((Math.ceil(Data.length/8))*40);
         }
 
 
-        function getRandomIntInclusive(min=1, max:number) {
+        function getRandomIntInclusive(min=1, max:number) { // gera valores aleatórios de um intervalo definido
             min = Math.ceil(min);
             max = Math.floor(max);
             return(Math.floor(Math.random() * (max - min + 1)) + min);
@@ -261,10 +260,10 @@ export default function Dados(){
                     </Picker>
                     <Text style={styles.text}>Dado:</Text>
                     <TextInput style={styles.box} keyboardType='numeric' value={dice} 
-                    onChangeText={(valor) => {setDice(valor)}}/>
+                    onChangeText={(valor:string) => {setDice(valor)}}/>
                     <Text style={styles.text}>Modificador:</Text>
                     <TextInput style={styles.box} keyboardType='numeric' value={modifier} 
-                    onChangeText={(valor) => {setModifier(valor)}}/>
+                    onChangeText={(valor:string) => {setModifier(valor)}}/>
 
                 </View>
                 
@@ -272,7 +271,7 @@ export default function Dados(){
                     <FlatList
                     data={Data}
                     renderItem={renderItem}
-                    keyExtractor={(item)=>{item.id}}
+                    keyExtractor={(item:DataArray)=>{item.id}}
                     numColumns={4}
                     />
                 </View>
@@ -295,7 +294,7 @@ export default function Dados(){
                     <FlatList
                     data={Data}
                     renderItem={renderTotal}
-                    keyExtractor={(item)=>{item.id}}
+                    keyExtractor={(item:DataArray)=>{item.id}}
                     numColumns={8}
                     />
                 </View>
