@@ -39,9 +39,9 @@ You can start editing the page by modifying `App.tsx`. The page auto-updates as 
 
 ## :bookmark: Learn More
 
-To learn more about Expo, take a look at the following resources:
+To learn more about React-native, take a look at the following resources:
 
-- [React-native Documentation](https://reactnative.dev/docs/getting-started) - learn about Expo features and API.
+- [React-native Documentation](https://reactnative.dev/docs/getting-started) - learn about React-native features and API.
 
 
 You can check out [the React-native repository](https://github.com/facebook/react-native) - your feedback and contributions are welcome!
